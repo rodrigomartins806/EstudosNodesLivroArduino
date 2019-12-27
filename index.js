@@ -2,6 +2,7 @@ var http = require('http');
 var express = require('express');
 var app = express();
 var server = http.createServer(app);
+var io = require('socket.io')(server);
 /* // redirecionamento para a raiz do projeto e passando uma mensagem de retorno
  app.get('/',function(req, res){
     res.send("Hello Word!!! nodes em NOtempo real");
@@ -27,9 +28,13 @@ var title = "Titulo Repassado via Comando";
 var componentArray = ['potentiometer','piezo','phototransistor','pushbutton'];
 
 app.get('/',function(req,res){
-    res.render('index',{
-        title:title,
-        components: componentArray
+    res.render('index')
+});
+
+io.on('connection',function(socket){
+    console.log('conexão estabelecida');
+    socket.on('disconnect',function(){
+        console.log('Servidor Desconectado');
     });
 });
 

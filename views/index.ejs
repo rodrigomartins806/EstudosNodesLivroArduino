@@ -4,20 +4,20 @@
         <title>
             Controle Arduino
         </title>
-        <link href="/css/main.css" rel="stylesheet" type="text/css">
+        <!-- <link href="/css/main.css" rel="stylesheet" type="text/css"> -->
     </head>
     <body>
 
-        <h1>Controlando Arduino via NodesJs</h1>
-        <p>Teste de Pagina feita com o Nodes JS</p>
-
-        <h2> <%=title%> </h2>
-        <div id="components">
-            <%components.forEach(function(component){%>
-                <p>component: <%=component%></p><%});%>
+            <div class="wrapper">
+            <h1>Usando o Socket.io</h1>
+            <p>Pagina atualizada para usar o Socket IO</p>
 
         </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha256-bQmrZe4yPnQrLTY+1gYylfNMBuGfnT/HKsCGX+9Xuqo=" crossorigin="anonymous"></script>
+<script>
+var socket = io();
+</script>
         
     </body>
 </html>
