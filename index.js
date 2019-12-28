@@ -31,8 +31,16 @@ app.get('/',function(req,res){
     res.render('index')
 });
 
+//declarando a viavel para acionar o botao da pagina
+var buttonValue = 0;
 io.on('connection',function(socket){
     console.log('conexão estabelecida');
+    io.emit('clicked message',buttonValue);
+    socket.on('clicked message',function(msg){
+        buttonValue = 1 - buttonValue;
+        io.emit('clicked message',buttonValue);
+        console.log('received message from client!',msg);
+    });
     socket.on('disconnect',function(){
         console.log('Servidor Desconectado');
     });
